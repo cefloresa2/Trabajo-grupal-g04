@@ -105,25 +105,66 @@ void tienda::actualizar_productos()
 class reporte
 {
 	private:
-		int dia;
-		int mes;
+		int r_dia;
+		int r_mes;
 		int tiempo;
+		int ganancia;
 	public:
 		reporte(int,int,int);
-		void nuevo_registro();
+		void nuevo_reporte();
 		void sumar_ganancias();
 		void imprime_reporte();
 };
 
-reporte::reporte(int _dia,int _mes,int _tiempo)
+reporte::reporte(int _r_dia,int _r_mes,int _tiempo,int _ganacia)
 {
-	dia = _dia;
-	mes = _mes;
+	r_dia = _r_dia;
+	r_mes = _r_mes;
 	tiempo = _tiempo;
+	ganancia = _ganancia;
 };
 
+void reporte::nuevo_reporte()
+{
+	cout<<"Ingrese la fecha desde donde quiere empezar el reporte(dd/mm) :";
+	cin>>r_dia;   cout<<"/";   cin>>r_mes;
+	
+	cout<<"Ingrese el numero de dias que tiene que tener el reporte: ";
+	cin>>tiempo;
+}
+
+void reporte::sumar_ganancias()
+{
+	ganancia=0;
+	
+	for(int i=0;i<tiempo;i++)
+	{
+		if(dia == r_dia && mes == r_mes)
+		{
+			ganancia = ganancia + monto;
+		}
+		
+		r_dia = r_dia + i;
+	}
+}
+
+void reporte::imprime_reporte()
+{
+	cout<<"-------------REPORTE---------------";
+	for(int i=0;i<tiempo;i++)
+	{
+		if(dia == r_dia && mes == r_mes)
+		{
+			cout<<"Fecha :"<<r_dia<<"/"<<r_mes<<"/2021\n";
+			cout<<cantidad<<"  "<<producto<<endl;
+		}
+		
+		r_dia = r_dia + i;
+	}
+	
+	cout<<"\n\nLas ganacias en el tiempo de este reporte es :"<<ganancia;
+}
 //------------Metodos------------------//
-void reporte::nuevo_registro()
 int main()
 {
 	return 0;
