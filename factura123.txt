@@ -1,0 +1,8 @@
+Factura N1
+Codigo: FF00001
+Cliente: juan perez contreras
+Dni: 11225544
+Producto: azucar
+Cantidad: 1 unidades
+Precio Unitario: S/. 0.5
+Precio Total: 0.5 Soles
