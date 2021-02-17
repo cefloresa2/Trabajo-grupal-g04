@@ -1,9 +1,10 @@
 /*Caso de uso : Generar reporte*/
-#include <reporte.h>
-#include <tienda.h>
-#include <venta.h>
+//#include "reporte.h"
+//#include "tienda.h"
+//#include "venta.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 //----------------Venta------------------//
@@ -17,8 +18,14 @@ class venta
 		int dia;
 		int mes;
 		string num_factura;
+		//tienda* tie;
 	public:
+		venta(int [], int, int, int, int, string);
 		void agregar_venta();
+		
+		int getMonto(){
+			return monto;
+		}
 };
 
 venta::venta(int _producto[100],int _cantidad,int _monto,int _dia,int _mes,string _num_factura)
@@ -36,7 +43,7 @@ void venta::agregar_venta()
 	cout<<"Agrege la nueva venta \n";
 	
 	cout<<"Ingrese el producto";
-	cin>>producto;
+	cin>>producto[i];
 	cout<<"Ingrese la cantidad";
 	cin>>cantidad;
 	cout<<"ingrese el monto";
@@ -53,7 +60,7 @@ class tienda
 		string lista_productos[100];
 		int num_productos[100];
 		int cantidad_disponible;
-		string lista_ventas[100];
+		vector<Ventas*> listaVentas;
 		int num_ventas;
 	public:
 		tienda(int,int,int,string,int);
@@ -62,7 +69,20 @@ class tienda
 		void informar_agotamiento();
 		void actualizar_productos();
 		void buscar_productos();
+		void crearVenta();
+		void aniadirVenta(Venta*);
 };
+
+void tienda::crearVenta(){
+	aniadirVenta(new Venta());
+	int n = listaVentas.size();
+	listaVentas[n]->agregar_venta();
+	cout<<listaVentas[n]->getMonto();
+}
+
+void tienda::aniadirVenta(Venta* ven){
+	listaVentas.push_back(ven);
+}
 
 tienda::tienda(int _lista_productos[100],int _num_productos,int _cantidad_disponible,string _lista_ventas[100],int _num_ventas)
 {
@@ -144,7 +164,7 @@ void reporte::sumar_ganancias()
 			ganancia = ganancia + monto;
 		}
 		
-		r_dia = r_dia + i;
+		r_dia = r_dia + i; 30 31 28
 	}
 }
 
@@ -164,7 +184,7 @@ void reporte::imprime_reporte()
 	
 	cout<<"\n\nLas ganacias en el tiempo de este reporte es :"<<ganancia;
 }
-//------------Metodos------------------//
+//--------------------------------------//
 int main()
 {
 	return 0;
