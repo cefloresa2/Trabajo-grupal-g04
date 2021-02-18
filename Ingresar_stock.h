@@ -4,32 +4,45 @@
 #include <vector>
 using namespace std;
 
-//------------------Tienda-------------------//
-class tienda
+//------------------Producto-------------------//
+class producto
 {
 	private:
-		string lista_productos[100];
-		int num_productos[100];
-		//int cantidad_disponible[100];
-		string cat_productos[100];
-		//vector<Ventas*> listaVentas;
-		//int num_ventas;
+		string Mombre;
+		int Numero;
+		string Categoria;
+		int Precio;
+		bool Estado;
+		string Marca;
+	
 	public:
-		tienda(string [],int [],string []);
-		//tienda(string [],int [],int [],int [],int);
-		void ingresar_stock();
+		producto(string ,int ,string ,int  ,string);
 };
 
-
-//tienda::tienda(string _lista_productos[100],int _num_productos[100],string _cat_productos[100],int _cantidad_disponible[100],string _lista_ventas[100],int _num_ventas)
-tienda::tienda(string _lista_productos[100], int _num_productos[100], string _cat_productos[100])
+producto::producto(string _Nombre, int _Numero, string _Categoria,int _Precio,string _Marca)
 {
-	lista_productos[100] = _lista_productos[100];
-	num_productos[100] = _num_productos[100];
-	cat_productos[100] = _cat_productos[100];
+	Nombre = _Nombre;
+	Numero = _Numero;
+	Categoria = _Categoria;
+	Precio = _Precio;
+	Estado = true;
+	Marca = _Marca;
+}
+
+
+//------------------Tienda-------------------//
+class tienda 
+{
+	private:
+		producto lista_productos[100];
+	public:
+		
+		void aumentar_stock();
+		void ordenar_productos();
+		void mostrar_lista();
 };
 
-void tienda::ingresar_stock()
+void tienda::aumentar_stock()
 {
 	int n;
 	
@@ -41,17 +54,31 @@ void tienda::ingresar_stock()
 	for(int i=1;i<=n;i++)
 	{
 		cout<<"Ingrese nombre del producto :";
-		cin>>lista_productos[i];
+		cin>>Nombre;
 		cout<<"Ingrese la cantidad que posee de tal producto :";
-		cin>>num_productos[i];
+		cin>>Numero;
 		cout<<"Ingrese la categoria del producto";
-		cin>>cat_productos[i];
+		cin>>Categoria;
+		cout<<"Ingrese el precio del producto";
+		cin>>Precio;
+		cout<<"Ingrese la marca del producto";
+		cin>>Marca;
 	}
 	cout<<"\n\n\n\n Lista de productos\n";
 	
-	cout<<"Producto                  Cantidad              Categoria\n";
+	cout<<"Productos    \n";
 	for(int i=1;i<=n;i++)
 	{
-		cout<<lista_productos[i]<<"     "<<num_productos[i]<<"      "<<cat_productos[i];
+		cout<<lista_productos[i];
 	}
+}
+
+void tienda::ordenar_productos()
+{
+	
+}
+
+void tienda::mostrar_lista()
+{
+	
 }
