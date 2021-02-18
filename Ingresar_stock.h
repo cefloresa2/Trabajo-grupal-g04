@@ -17,6 +17,7 @@ class producto
 	
 	public:
 		producto(string ,int ,string ,int  ,string);
+		
 };
 
 producto::producto(string _Nombre, int _Numero, string _Categoria,int _Precio,string _Marca)
@@ -34,17 +35,33 @@ producto::producto(string _Nombre, int _Numero, string _Categoria,int _Precio,st
 class tienda 
 {
 	private:
-		producto lista_productos[100];
+		vector<producto*> lista_productos;
 	public:
 		
-		void aumentar_stock();
+		void aumentar_stock(string name, int cant);
 		void ordenar_productos();
-		void mostrar_lista();
+		int buscarProducto(string);
+		
 };
 
-void tienda::aumentar_stock()
+void tienda::aumentar_stock(name, cant)
 {
 	int n;
+	int pos;
+	string cat, pre, marc
+	
+	pos = buscarProducto(name);
+	
+	if(pos != -1){
+		lista_productos[pos]->actualizarStock(cant);
+	}
+	else{
+		cout<<"No se encontro "<<name<<". Se ingresara y un producto nuevo"<<endl;
+		cout<<"Ingrese categoria: "; cin>>cat;
+		cout<<"Ingrese precio: "; cin>>pre;
+		cout<<"Ingrese marca: "; cin>>mar;
+		lista_productos.push_back(new producto(name, cant, cat, pre, mar));
+	}
 	
 	cout<<"Ingrese los productos\n\n";
 	
@@ -72,6 +89,27 @@ void tienda::aumentar_stock()
 		cout<<lista_productos[i];
 	}
 }
+
+int tienda::buscarProductoxNombre(string name){	
+	for(int i=0; i< lista_productos.size();i++){
+		if(lista_productos[i]->getNombre() == name){
+			return i;
+		}
+	}
+	return -1;
+}
+
+vector<Producto*> tienda::mostrarProductosxCategoria(string cat){
+	vector<Producto*> listaProdxCat;
+	for(int i=0; i< lista_productos.size();i++){
+		if(lista_productos[i]->comprobarcategoria(cat)){
+			listaProdxCat.push_back(lista_productos[i]);
+		}
+	}
+	return listaProdxCat;
+}
+
+
 
 void tienda::ordenar_productos()
 {
