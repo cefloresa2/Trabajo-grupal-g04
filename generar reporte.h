@@ -59,12 +59,13 @@ class tienda
 	private:
 		string lista_productos[100];
 		int num_productos[100];
-		int cantidad_disponible;
+		int cantidad_disponible[100];
+		int cat_productos[100];
 		vector<Ventas*> listaVentas;
 		int num_ventas;
 	public:
-		tienda(int,int,int,string,int);
-		void ingresar_productos();
+		tienda(string [],int [],int [],int [],int);
+		void ingresar_stock();
 		void restar_productos();
 		void informar_agotamiento();
 		void actualizar_productos();
@@ -84,16 +85,17 @@ void tienda::aniadirVenta(Venta* ven){
 	listaVentas.push_back(ven);
 }
 
-tienda::tienda(int _lista_productos[100],int _num_productos,int _cantidad_disponible,string _lista_ventas[100],int _num_ventas)
+tienda::tienda(string _lista_productos[100],int _num_productos[100],string _cat_productos[100],int _cantidad_disponible[100],string _lista_ventas[100],int _num_ventas)
 {
 	lista_productos[100] = _lista_productos[100];
-	num_productos = _num_productos;
+	num_productos[100] = _num_productos[100];
+	cat_productos[100] = _cat_productos[100];
 	cantidad_disponible = _cantidad_disponible;
 	lista_ventas[100] = _lista_ventas[100];
 	num_ventas = _num_ventas;
 };
 
-void tienda::ingresar_productos()
+void tienda::ingresar_stock()
 {
 	int aux;
 	
@@ -108,12 +110,17 @@ void tienda::ingresar_productos()
 		cin>>lista_productos[i];
 		cout<<"Ingrese la cantidad que posee de tal producto :";
 		cin>>num_productos[i];
+		cout<<"Ingrese la categoria del producto"
+		cin>>cat_productos[i];
 	}
 	cout<<"\n\n\n\n Lista de productos\n";
-	cout<<"Producto                  Cantidad\n";
+	
+	
+	if(ca)
+	cout<<"Producto                  Cantidad              Categoria\n";
 	for(int i=1;i<=n;i++)
 	{
-		cout<<lista_productos[i]<<"     "<<num_productos[i];
+		cout<<lista_productos[i]<<"     "<<num_productos[i]<<"      "<<cat_productos[i];
 	}
 }
 
