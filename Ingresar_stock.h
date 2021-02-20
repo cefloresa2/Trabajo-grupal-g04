@@ -8,7 +8,7 @@ using namespace std;
 class producto
 {
 	private:
-		string Mombre;
+		string Nombre;
 		int Numero;
 		string Categoria;
 		int Precio;
@@ -17,6 +17,7 @@ class producto
 	
 	public:
 		producto(string ,int ,string ,int  ,string);
+		void actualizarStock(int,int);
 		
 };
 
@@ -30,57 +31,66 @@ producto::producto(string _Nombre, int _Numero, string _Categoria,int _Precio,st
 	Marca = _Marca;
 }
 
+void producto::actualizarStock(int numero,int posicion)
+{
+	lista_productos[posicion]->getNumero() + numero;
+}
 
 //------------------Tienda-------------------//
 class tienda 
 {
 	private:
 		vector<producto*> lista_productos;
+		int aux;
 	public:
 		
-		void aumentar_stock(string name, int cant);
+		void aumentar_stock();
 		void ordenar_productos();
-		int buscarProducto(string);
+		int actualizarStock(int);
+		int buscarProductoxNombre(string);
+		void mostrarProductosxCategoria(string);
 		
 };
 
-void tienda::aumentar_stock(name, cant)
+void tienda::aumentar_stock()
 {
 	int n;
 	int pos;
-	string cat, pre, marc
+	int num;
+	string cat, pre, mar, name;
 	
-	pos = buscarProducto(name);
-	
-	if(pos != -1){
-		lista_productos[pos]->actualizarStock(cant);
-	}
-	else{
-		cout<<"No se encontro "<<name<<". Se ingresara y un producto nuevo"<<endl;
-		cout<<"Ingrese categoria: "; cin>>cat;
-		cout<<"Ingrese precio: "; cin>>pre;
-		cout<<"Ingrese marca: "; cin>>mar;
-		lista_productos.push_back(new producto(name, cant, cat, pre, mar));
-	}
-	
-	cout<<"Ingrese los productos\n\n";
-	
-	cout<<"Cuantos productos tiene :";
+	cout<<"Cuantos productos ingresara :";
 	cin>>n;
 	
 	for(int i=1;i<=n;i++)
-	{
-		cout<<"Ingrese nombre del producto :";
-		cin>>Nombre;
-		cout<<"Ingrese la cantidad que posee de tal producto :";
-		cin>>Numero;
-		cout<<"Ingrese la categoria del producto";
-		cin>>Categoria;
-		cout<<"Ingrese el precio del producto";
-		cin>>Precio;
-		cout<<"Ingrese la marca del producto";
-		cin>>Marca;
+	{ 
+	
+		cout<<"Ingrese el nombre del producto que ingresara : ";
+	    cin>>name;
+	
+	    pos = buscarProductoxNombre(name);
+	
+	    if(pos != -1){
+	    	cout<<"El producto ya existe en el stock \n\n";
+			cout<<"Ingrese la cantidad del producto :";
+			cin>>num;
+			
+			lista_productos[pos]->actualizarStock(num,pos);
+     	}
+     	
+
+	    else{
+		cout<<"No se encontro "<<name<<". Se ingresara como un producto nuevo"<<endl;
+		cout<<"Ingrese cantidad: "; cin>>num;
+		cout<<"Ingrese categoria: "; cin>>cat;
+		cout<<"Ingrese precio: "; cin>>pre;
+		cout<<"Ingrese marca: "; cin>>mar;
+		lista_productos.push_back(new producto(name, num, cat, pre, mar));
+	    }
+	 
 	}
+	
+	
 	cout<<"\n\n\n\n Lista de productos\n";
 	
 	cout<<"Productos    \n";
@@ -109,14 +119,3 @@ vector<Producto*> tienda::mostrarProductosxCategoria(string cat){
 	return listaProdxCat;
 }
 
-
-
-void tienda::ordenar_productos()
-{
-	
-}
-
-void tienda::mostrar_lista()
-{
-	
-}

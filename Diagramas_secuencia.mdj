@@ -5974,7 +5974,7 @@
 												"$ref": "AAAAAAF3YRoMhZ+sIHE="
 											},
 											"edgePosition": 1,
-											"text": "1 : aumentar stock(nombre, cant)"
+											"text": "1 : aumentar stock(nombre)"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -6764,7 +6764,7 @@
 							"target": {
 								"$ref": "AAAAAAF3YRl3Op+KQgg="
 							},
-							"arguments": "nombre, cant"
+							"arguments": "nombre"
 						},
 						{
 							"_type": "UMLMessage",
