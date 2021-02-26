@@ -31,9 +31,9 @@ producto::producto(string _Nombre, int _Numero, string _Categoria,int _Precio,st
 	Marca = _Marca;
 }
 
-void producto::actualizarStock(int numero,int posicion)
+void producto::actualizarStock(int num)
 {
-	lista_productos[posicion]->getNumero() + numero;
+	Numero = Numero + num;
 }
 
 //------------------Tienda-------------------//
@@ -45,11 +45,11 @@ class tienda
 	public:
 		
 		void aumentar_stock();
-		void ordenar_productos();
-		int actualizarStock(int);
+		//void ordenar_productos();
+		//int actualizarStock(int);
 		int buscarProductoxNombre(string);
-		void mostrarProductosxCategoria(string);
-		
+		//void mostrarProductosxCategoria(string);
+		void mostrar();
 };
 
 void tienda::aumentar_stock()
@@ -60,7 +60,7 @@ void tienda::aumentar_stock()
 	string cat, pre, mar, name;
 	
 	cout<<"Cuantos productos ingresara :";
-	cin>>n;
+	cin>>n;20
 	
 	for(int i=1;i<=n;i++)
 	{ 
@@ -75,7 +75,7 @@ void tienda::aumentar_stock()
 			cout<<"Ingrese la cantidad del producto :";
 			cin>>num;
 			
-			lista_productos[pos]->actualizarStock(num,pos);
+			lista_productos[pos]->actualizarStock(num);
      	}
      	
 
@@ -109,7 +109,7 @@ int tienda::buscarProductoxNombre(string name){
 	return -1;
 }
 
-vector<Producto*> tienda::mostrarProductosxCategoria(string cat){
+/* vector<Producto*> tienda::mostrarProductosxCategoria(string cat){
 	vector<Producto*> listaProdxCat;
 	for(int i=0; i< lista_productos.size();i++){
 		if(lista_productos[i]->comprobarcategoria(cat)){
@@ -117,5 +117,11 @@ vector<Producto*> tienda::mostrarProductosxCategoria(string cat){
 		}
 	}
 	return listaProdxCat;
+} */
+
+void tienda::mostrar()
+{
+	
 }
+
 
