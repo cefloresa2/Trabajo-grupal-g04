@@ -45,11 +45,11 @@ class tienda
 	public:
 		
 		void aumentar_stock();
-		//void ordenar_productos();
-		//int actualizarStock(int);
-		int buscarProductoxNombre(string);
-		//void mostrarProductosxCategoria(string);
-		void mostrar();
+		int actualizarStock(int);
+		int buscarProductoxcategoria(string);
+		void mostrarProductosxCategoria(string);
+		void seleccionar_productos(string);
+		void mostrar_seleccion();
 };
 
 void tienda::aumentar_stock()
@@ -100,16 +100,18 @@ void tienda::aumentar_stock()
 	}
 }
 
-int tienda::buscarProductoxNombre(string name){	
+//-----------------CASO DE USO BUSCAR PRODUCTO-----------------------------------
+
+int tienda::buscarProductoxcategoria(string categoria){	
 	for(int i=0; i< lista_productos.size();i++){
-		if(lista_productos[i]->getNombre() == name){
+		if(lista_productos[i]->getcategoria() == cat){
 			return i;
 		}
 	}
 	return -1;
 }
 
-/* vector<Producto*> tienda::mostrarProductosxCategoria(string cat){
+vector<Producto*> tienda::mostrarProductosxCategoria(string cat){
 	vector<Producto*> listaProdxCat;
 	for(int i=0; i< lista_productos.size();i++){
 		if(lista_productos[i]->comprobarcategoria(cat)){
@@ -117,11 +119,21 @@ int tienda::buscarProductoxNombre(string name){
 		}
 	}
 	return listaProdxCat;
-} */
-
-void tienda::mostrar()
+} 
+vector<Producto*>tienda::seleccionar_productos()
 {
-	
+	vector<producto*>lista_seleccion;
+	cout<<"ingrese seleccion";
+	cin>>nom;
+	for(int i=0;i<listaprodxcat.size();i++)
+	{
+		if(listaprodxcat[i]->seleccionprod(nom))
+		{
+			lista_seleccion.push_back(listaproxcat[i]);
+		}
+	return lista_seleccion;
+	}
 }
+
 
 
