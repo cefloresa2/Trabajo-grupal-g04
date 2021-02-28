@@ -1,7 +1,7 @@
 //clase venta.cpp
 #include <iostream>
 #include <fstream>
-#include <windows.h>                                                 //mejorado
+#include <windows.h>                                                 //mejorado 2
 #include <conio.h>
 #include <string.h>
 //#include "cliente.cpp"
@@ -26,7 +26,7 @@ class Venta
 		string Dni[8];
 		string Dni2[8];
 		//float resultado;
-		
+
   //
 	public:
 		float resultado;
@@ -79,7 +79,7 @@ int i=0;
 }
 void Venta::mostrar(){
 	cout<<"-----Mostrar Factura------\n\n";
-	
+
 	int j=0;
 	while(j<i){              //es j<i no j<=i corregido  //muestra
 		cout<<"\n\n---Venta ["<<j+1<<"] ----\n";
